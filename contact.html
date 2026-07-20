@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Contact | KDSos</title>
+<meta name="description" content="Get in touch with Kidz Dat Shr3d — questions about membership, Shred Fest, sponsorships, or the shop." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://api.fontshare.com/v2/css?f[]=clash-display@600,500&f[]=satoshi@400,500,700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400,500&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="./base.css" />
+<link rel="stylesheet" href="./style.css" />
+<link rel="stylesheet" href="./pages.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/regular/style.css" />
+</head>
+<body>
+<a class="sr-only" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap site-header__inner">
+    <a class="brand" href="./index.html" aria-label="Kidz Dat Shr3d home">
+      <svg class="brand__mark" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+        <circle cx="20" cy="20" r="17" stroke="currentColor" stroke-width="2.5"/>
+        <path d="M9 25.5C13 21 16.5 17.8 20 17.8C23.5 17.8 27 21 31 25.5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+        <circle cx="14" cy="27.5" r="2.1" fill="currentColor"/>
+        <circle cx="26" cy="27.5" r="2.1" fill="currentColor"/>
+      </svg>
+      <span class="brand__name">Kidz Dat Shr3d<span>KDSos</span></span>
+    </a>
+    <nav class="nav" aria-label="Primary">
+      <div class="nav__links">
+        <a class="nav__link" href="./index.html#mission">Mission</a>
+        <a class="nav__link" href="./about.html">About</a>
+        <a class="nav__link" href="./shop.html">Shop</a>
+        <a class="nav__link" href="./verify.html">Verify / Join</a>
+        <a class="nav__link" href="./contact.html" aria-current="page">Contact</a>
+      </div>
+      <a class="nav__cta" href="./donate.html">
+        Donate
+        <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <button class="nav__toggle" id="menuToggle" aria-expanded="false" aria-controls="mobileMenu" aria-label="Open menu">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </nav>
+  </div>
+  <div class="wrap">
+    <div class="mobile-menu" id="mobileMenu">
+      <a class="nav__link" href="./index.html#mission">Mission</a>
+      <a class="nav__link" href="./shop.html">Shop</a>
+      <a class="nav__link" href="./verify.html">Verify / Join</a>
+      <a class="nav__link" href="./about.html">About</a>
+      <a class="nav__link" href="./contact.html">Contact</a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <section class="page-hero wrap">
+    <span class="page-hero__eyebrow">We usually reply within a couple days</span>
+    <h1 class="page-hero__title">Contact Us</h1>
+    <p class="page-hero__sub">Questions about membership, Shred Fest, sponsorships, or an order? Send a message and the KDS team will get back to you.</p>
+  </section>
+
+  <section class="section wrap" style="padding-top:0;">
+    <div id="alertBox" class="alert alert--error" role="alert"></div>
+    <div id="successBox" class="alert alert--success" role="status"></div>
+
+    <form class="form" id="contactForm" novalidate>
+      <div class="form-row form-row--2">
+        <div class="form-field">
+          <label class="form-label" for="contactName">Name <span class="req">*</span></label>
+          <input class="form-input" id="contactName" type="text" required />
+        </div>
+        <div class="form-field">
+          <label class="form-label" for="contactEmail">Email <span class="req">*</span></label>
+          <input class="form-input" id="contactEmail" type="email" required />
+        </div>
+      </div>
+      <div class="form-field">
+        <label class="form-label" for="contactMessage">Message <span class="req">*</span></label>
+        <textarea class="form-textarea" id="contactMessage" required maxlength="4000" placeholder="How can we help?"></textarea>
+      </div>
+      <div class="form-submit-row">
+        <button class="btn btn-primary" type="submit" id="contactSubmit">
+          Send Message
+          <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+    </form>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap site-footer__nav">
+    <a class="nav__link" href="./index.html#mission">Mission</a>
+    <a class="nav__link" href="./index.html#story">Story</a>
+    <a class="nav__link" href="./index.html#vision">Vision</a>
+    <a class="nav__link" href="./verify.html">Verify / Join</a>
+    <a class="nav__link" href="./about.html">About</a>
+    <a class="nav__link" href="./contact.html">Contact</a>
+  </div>
+  <div class="wrap site-footer__inner">
+    <div>
+      <p class="site-footer__brand">Kidz Dat Shr3d</p>
+      <p class="site-footer__meta">© 2026 KDSos · 501(c)(3) · Pahrump, NV</p>
+    </div>
+    <a class="site-footer__cta" href="./shop.html">Shop</a>
+  </div>
+</footer>
+
+<script src="./api.js"></script>
+<script src="./app.js" defer></script>
+<script src="./contact.js" defer></script>
+</body>
+</html>

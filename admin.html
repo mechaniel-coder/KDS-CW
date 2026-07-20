@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Admin | KDSos</title>
+<meta name="robots" content="noindex, nofollow" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://api.fontshare.com/v2/css?f[]=clash-display@600,500&f[]=satoshi@400,500,700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400,500&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="./base.css" />
+<link rel="stylesheet" href="./style.css" />
+<link rel="stylesheet" href="./pages.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/regular/style.css" />
+</head>
+<body>
+<a class="sr-only" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap site-header__inner">
+    <a class="brand" href="./index.html" aria-label="Kidz Dat Shr3d home">
+      <svg class="brand__mark" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+        <circle cx="20" cy="20" r="17" stroke="currentColor" stroke-width="2.5"/>
+        <path d="M9 25.5C13 21 16.5 17.8 20 17.8C23.5 17.8 27 21 31 25.5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+        <circle cx="14" cy="27.5" r="2.1" fill="currentColor"/>
+        <circle cx="26" cy="27.5" r="2.1" fill="currentColor"/>
+      </svg>
+      <span class="brand__name">Kidz Dat Shr3d<span>KDSos Admin</span></span>
+    </a>
+    <nav class="nav" aria-label="Primary">
+      <button class="btn-tiny" id="logoutBtn" hidden>Log out</button>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="admin-login wrap" id="loginSection">
+    <span class="page-hero__eyebrow">Restricted access</span>
+    <h1 class="page-hero__title" style="font-size:var(--text-xl); margin-bottom:var(--space-6);">Admin Sign In</h1>
+    <div id="loginAlert" class="alert alert--error" role="alert"></div>
+    <form class="form" id="adminLoginForm" novalidate>
+      <div class="form-field">
+        <label class="form-label" for="adminEmail">Email</label>
+        <input class="form-input" id="adminEmail" type="email" required autocomplete="username" />
+      </div>
+      <div class="form-field">
+        <label class="form-label" for="adminPassword">Password</label>
+        <input class="form-input" id="adminPassword" type="password" required autocomplete="current-password" />
+      </div>
+      <div class="form-submit-row">
+        <button class="btn btn-primary" type="submit">Sign In</button>
+      </div>
+    </form>
+  </section>
+
+  <section class="admin-shell wrap" id="dashboardSection" hidden>
+    <div class="admin-stats" id="statsGrid"></div>
+
+    <div class="admin-tabs" role="tablist">
+      <button class="admin-tab is-active" data-tab="orders">Orders</button>
+      <button class="admin-tab" data-tab="donations">Donations</button>
+      <button class="admin-tab" data-tab="submissions">Submissions</button>
+      <button class="admin-tab" data-tab="members">Members</button>
+    </div>
+
+    <div id="tabAlert" class="alert alert--error" role="alert"></div>
+    <div id="tabContent"></div>
+  </section>
+</main>
+
+<script src="./api.js"></script>
+<script src="./admin.js" defer></script>
+</body>
+</html>

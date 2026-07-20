@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>KDSos | Kidz Dat Shr3d</title>
+<meta name="description" content="Kidz Dat Shr3d (KDSos) — a Pahrump, NV youth action sports 501(c)(3): safe sessions, real mentorship, and a place for kids who shred to belong." />
+<meta property="og:title" content="KDSos | Kidz Dat Shr3d" />
+<meta property="og:description" content="A Pahrump youth action sports nonprofit — safe sessions, real mentorship, and a place for kids who shred to belong." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://api.fontshare.com/v2/css?f[]=clash-display@600,500&f[]=satoshi@400,500,700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400,500&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="./base.css" />
+<link rel="stylesheet" href="./style.css" />
+<link rel="stylesheet" href="./pages.css" />
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/regular/style.css" />
+
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@0.183.0/build/three.module.js"
+  }
+}
+</script>
+</head>
+<body>
+
+<a class="sr-only" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap site-header__inner">
+    <a class="brand" href="#top" aria-label="Kidz Dat Shr3d home">
+      <svg class="brand__mark" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+        <circle cx="20" cy="20" r="17" stroke="currentColor" stroke-width="2.5"/>
+        <path d="M9 25.5C13 21 16.5 17.8 20 17.8C23.5 17.8 27 21 31 25.5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+        <circle cx="14" cy="27.5" r="2.1" fill="currentColor"/>
+        <circle cx="26" cy="27.5" r="2.1" fill="currentColor"/>
+      </svg>
+      <span class="brand__name">Kidz Dat Shr3d<span>KDSos</span></span>
+    </a>
+
+    <nav class="nav" aria-label="Primary">
+      <div class="nav__links">
+        <a class="nav__link" href="#mission">Mission</a>
+        <a class="nav__link" href="#story">Story</a>
+        <a class="nav__link" href="#vision">Vision</a>
+        <a class="nav__link" href="./shop.html">Shop</a>
+        <a class="nav__link" href="./verify.html">Verify / Join</a>
+      </div>
+      <a class="nav__cta" href="./donate.html">
+        Donate
+        <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <button class="nav__toggle" id="menuToggle" aria-expanded="false" aria-controls="mobileMenu" aria-label="Open menu">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </nav>
+  </div>
+  <div class="wrap">
+    <div class="mobile-menu" id="mobileMenu">
+      <a class="nav__link" href="#mission">Mission</a>
+      <a class="nav__link" href="#story">Story</a>
+      <a class="nav__link" href="#vision">Vision</a>
+      <a class="nav__link" href="./shop.html">Shop</a>
+      <a class="nav__link" href="./verify.html">Verify / Join</a>
+      <a class="nav__link" href="./about.html">About</a>
+      <a class="nav__link" href="./contact.html">Contact</a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- HERO -->
+  <section class="hero wrap" id="top">
+    <div class="hero__grid">
+      <div class="hero__body">
+        <span class="hero__eyebrow">501(c)(3) · Kalawaia Family · Pahrump, NV</span>
+
+        <h1 class="kinetic" data-kinetic aria-label="Kidz Dat Shr3d">Kidz Dat Shr3d</h1>
+        <p class="hero__sub kinetic kinetic--accent" data-kinetic aria-label="KDSos" style="font-size:var(--text-lg); margin-top:var(--space-2);">KDSos</p>
+
+        <p>A Pahrump youth action sports nonprofit — safe sessions, real mentorship, and a place for kids who shred to belong.</p>
+
+        <div class="cta-row">
+          <a class="btn btn-primary" href="./shop.html">
+            Enter Shop
+            <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a class="btn btn-secondary" href="./verify.html">
+            Verify / Join
+            <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-viz" aria-hidden="true">
+        <canvas id="heroCanvas"></canvas>
+        <div class="hero-viz__fallback"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MISSION -->
+  <section class="section wrap" id="mission">
+    <span class="section__eyebrow">What We Do</span>
+    <h2 class="section__title reveal">Built On<br />Three Things</h2>
+
+    <div class="mission__grid">
+      <article class="mission-card reveal">
+        <i class="ph ph-users mission-card__icon" aria-hidden="true"></i>
+        <h3>Community Sessions</h3>
+        <p>Safe, consistent riding sessions at the park — a space where kids who shred show up and belong, no matter their level.</p>
+      </article>
+      <article class="mission-card reveal">
+        <i class="ph ph-graduation-cap mission-card__icon" aria-hidden="true"></i>
+        <h3>Youth-Led Mentorship</h3>
+        <p>Kingsten and older riders coach new kids through their first tricks — real mentorship, from someone who's been there.</p>
+      </article>
+      <article class="mission-card reveal">
+        <i class="ph ph-shield-check mission-card__icon" aria-hidden="true"></i>
+        <h3>Gear &amp; Safety Support</h3>
+        <p>Helmets, boards, and safety gear for kids who need it — because no one should sit out for lack of equipment.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- STORY -->
+  <section class="section wrap" id="story">
+    <span class="section__eyebrow">From the Park to Purpose</span>
+    <h2 class="section__title reveal">From the Park<br />to Purpose</h2>
+
+    <div class="story__grid">
+      <div class="media-frame media-frame--wide reveal" role="img" aria-label="Placeholder for KDS park session footage">
+        <div class="media-frame__shine"></div>
+        <p class="media-frame__label">Temp media · replace with family-approved Kingsten / KDS assets</p>
+      </div>
+
+      <div class="story__body reveal">
+        <p><strong>Gary and Liza Kalawaia</strong> built Kidz Dat Shr3d after watching idle energy at the local park turn into something better — their son Kingsten pulling peers onto boards and into a positive path.</p>
+        <p>Today <strong>Kingsten</strong> competes hard and mentors at KDS events, helping new riders land first tricks while the org raises gear, hosts sessions, and works toward a dedicated action-sports hub for Pahrump youth.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- VISION / FACILITY -->
+  <section class="section vision" id="vision">
+    <div class="vision__blob" aria-hidden="true"></div>
+    <div class="wrap vision__inner">
+      <span class="section__eyebrow reveal">The Next Chapter</span>
+      <h2 class="section__title reveal">A Home Base<br />For Every Rider</h2>
+      <p class="vision__body reveal">Right now, sessions run wherever the park allows. KDS hosts community fundraisers — like its annual Shred Fest at the local skate park — to help build toward a dedicated, weather-proof action-sports facility for Pahrump youth: a place with no set hours and no reason to sit out.</p>
+      <div class="cta-row reveal">
+        <a class="btn btn-primary" href="./donate.html">
+          Donate to the Fund
+          <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a class="btn btn-secondary" href="./verify.html">
+          Verify / Join
+          <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap site-footer__nav">
+    <a class="nav__link" href="#mission">Mission</a>
+    <a class="nav__link" href="#story">Story</a>
+    <a class="nav__link" href="#vision">Vision</a>
+    <a class="nav__link" href="./verify.html">Verify / Join</a>
+    <a class="nav__link" href="./about.html">About</a>
+    <a class="nav__link" href="./contact.html">Contact</a>
+  </div>
+  <div class="wrap site-footer__inner">
+    <div>
+      <p class="site-footer__brand">Kidz Dat Shr3d</p>
+      <p class="site-footer__meta">© 2026 KDSos · 501(c)(3) · Pahrump, NV</p>
+    </div>
+    <a class="site-footer__cta" href="./shop.html">Shop</a>
+  </div>
+</footer>
+
+<script src="./api.js"></script>
+<script src="./app.js" defer></script>
+<script type="module" src="./hero-particles.js"></script>
+</body>
+</html>

@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Verify / Join | KDSos</title>
+<meta name="description" content="Join Kidz Dat Shr3d — a guardian-managed membership application for youth riders in Pahrump, NV." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://api.fontshare.com/v2/css?f[]=clash-display@600,500&f[]=satoshi@400,500,700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400,500&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="./base.css" />
+<link rel="stylesheet" href="./style.css" />
+<link rel="stylesheet" href="./pages.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/regular/style.css" />
+</head>
+<body>
+<a class="sr-only" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap site-header__inner">
+    <a class="brand" href="./index.html" aria-label="Kidz Dat Shr3d home">
+      <svg class="brand__mark" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+        <circle cx="20" cy="20" r="17" stroke="currentColor" stroke-width="2.5"/>
+        <path d="M9 25.5C13 21 16.5 17.8 20 17.8C23.5 17.8 27 21 31 25.5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+        <circle cx="14" cy="27.5" r="2.1" fill="currentColor"/>
+        <circle cx="26" cy="27.5" r="2.1" fill="currentColor"/>
+      </svg>
+      <span class="brand__name">Kidz Dat Shr3d<span>KDSos</span></span>
+    </a>
+    <nav class="nav" aria-label="Primary">
+      <div class="nav__links">
+        <a class="nav__link" href="./index.html#mission">Mission</a>
+        <a class="nav__link" href="./index.html#story">Story</a>
+        <a class="nav__link" href="./index.html#vision">Vision</a>
+        <a class="nav__link" href="./shop.html">Shop</a>
+        <a class="nav__link" href="./verify.html" aria-current="page">Verify / Join</a>
+      </div>
+      <a class="nav__cta" href="./donate.html">
+        Donate
+        <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <button class="nav__toggle" id="menuToggle" aria-expanded="false" aria-controls="mobileMenu" aria-label="Open menu">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </nav>
+  </div>
+  <div class="wrap">
+    <div class="mobile-menu" id="mobileMenu">
+      <a class="nav__link" href="./index.html#mission">Mission</a>
+      <a class="nav__link" href="./index.html#story">Story</a>
+      <a class="nav__link" href="./index.html#vision">Vision</a>
+      <a class="nav__link" href="./shop.html">Shop</a>
+      <a class="nav__link" href="./verify.html">Verify / Join</a>
+      <a class="nav__link" href="./about.html">About</a>
+      <a class="nav__link" href="./contact.html">Contact</a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <section class="page-hero wrap">
+    <span class="page-hero__eyebrow">Guardian-managed membership</span>
+    <h1 class="page-hero__title">Verify / Join</h1>
+    <p class="page-hero__sub">KDS membership accounts are always created and managed by a parent or guardian on behalf of a young rider — never by the minor directly. We only collect what we need, and you can request removal at any time.</p>
+  </section>
+
+  <section class="section wrap" style="padding-top:0;">
+    <div id="alertBox" class="alert alert--error" role="alert"></div>
+
+    <div id="joinPanel">
+      <form class="form" id="joinForm" novalidate>
+        <div class="form-field">
+          <label class="form-label" for="guardianEmail">Your email <span class="req">*</span></label>
+          <input class="form-input" id="guardianEmail" type="email" required autocomplete="email" />
+          <p class="form-hint">This becomes your login for checking application status.</p>
+        </div>
+        <div class="form-field">
+          <label class="form-label" for="guardianPassword">Create a password <span class="req">*</span></label>
+          <input class="form-input" id="guardianPassword" type="password" required minlength="10" autocomplete="new-password" />
+          <p class="form-hint">At least 10 characters, with upper &amp; lower case letters and a number.</p>
+        </div>
+
+        <div class="form-row form-row--2">
+          <div class="form-field">
+            <label class="form-label" for="guardianName">Your full name <span class="req">*</span></label>
+            <input class="form-input" id="guardianName" type="text" required />
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="guardianRelationship">Relationship to rider <span class="req">*</span></label>
+            <select class="form-select" id="guardianRelationship" required>
+              <option value="">Select…</option>
+              <option>Parent</option>
+              <option>Legal Guardian</option>
+              <option>Grandparent</option>
+              <option>Other Guardian</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row form-row--2">
+          <div class="form-field">
+            <label class="form-label" for="minorFirst">Rider's first name <span class="req">*</span></label>
+            <input class="form-input" id="minorFirst" type="text" required />
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="minorLast">Rider's last name <span class="req">*</span></label>
+            <input class="form-input" id="minorLast" type="text" required />
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label" for="minorDob">Rider's date of birth <span class="req">*</span></label>
+          <input class="form-input" id="minorDob" type="date" required style="max-width:16rem;" />
+        </div>
+
+        <div class="form-checkbox-row">
+          <input type="checkbox" id="consentCheck" required />
+          <label for="consentCheck">
+            I am this rider's parent or legal guardian. I consent to KDS collecting the information above solely to
+            manage this membership, and understand I can request it be corrected or permanently deleted at any time
+            by contacting KDS. <span class="req">*</span>
+          </label>
+        </div>
+
+        <div class="form-submit-row">
+          <button class="btn btn-primary" type="submit" id="joinSubmit">
+            Submit Application
+            <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <div id="statusPanel" hidden>
+      <div class="alert alert--info is-visible" style="max-width:44rem;">
+        <p><strong>Application received.</strong></p>
+        <p id="statusText" style="margin-top:var(--space-2);"></p>
+      </div>
+    </div>
+
+    <hr style="border-color:var(--color-divider); margin:var(--space-16) 0;" />
+
+    <div style="max-width:30rem;">
+      <h2 style="font-size:var(--text-lg); margin-bottom:var(--space-4);">Already applied?</h2>
+      <form class="form" id="loginForm" novalidate>
+        <div class="form-row form-row--2">
+          <div class="form-field">
+            <label class="form-label" for="loginEmail">Email</label>
+            <input class="form-input" id="loginEmail" type="email" required />
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="loginPassword">Password</label>
+            <input class="form-input" id="loginPassword" type="password" required />
+          </div>
+        </div>
+        <div class="form-submit-row">
+          <button class="btn btn-secondary" type="submit">Check Status</button>
+        </div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap site-footer__nav">
+    <a class="nav__link" href="./index.html#mission">Mission</a>
+    <a class="nav__link" href="./index.html#story">Story</a>
+    <a class="nav__link" href="./index.html#vision">Vision</a>
+    <a class="nav__link" href="./verify.html">Verify / Join</a>
+    <a class="nav__link" href="./about.html">About</a>
+    <a class="nav__link" href="./contact.html">Contact</a>
+  </div>
+  <div class="wrap site-footer__inner">
+    <div>
+      <p class="site-footer__brand">Kidz Dat Shr3d</p>
+      <p class="site-footer__meta">© 2026 KDSos · 501(c)(3) · Pahrump, NV</p>
+    </div>
+    <a class="site-footer__cta" href="./shop.html">Shop</a>
+  </div>
+</footer>
+
+<script src="./api.js"></script>
+<script src="./app.js" defer></script>
+<script src="./verify.js" defer></script>
+</body>
+</html>
