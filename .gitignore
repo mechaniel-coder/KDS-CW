@@ -2,3 +2,7 @@
 Thumbs.db
 .env
 .env.*
+
+graphify-out/cache/
+.cursor/
+
