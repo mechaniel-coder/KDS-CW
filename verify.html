@@ -75,12 +75,7 @@
         <div class="form-field">
           <label class="form-label" for="guardianEmail">Your email <span class="req">*</span></label>
           <input class="form-input" id="guardianEmail" type="email" required autocomplete="email" />
-          <p class="form-hint">This becomes your login for checking application status.</p>
-        </div>
-        <div class="form-field">
-          <label class="form-label" for="guardianPassword">Create a password <span class="req">*</span></label>
-          <input class="form-input" id="guardianPassword" type="password" required minlength="10" autocomplete="new-password" />
-          <p class="form-hint">At least 10 characters, with upper &amp; lower case letters and a number.</p>
+          <p class="form-hint">We'll follow up here once we receive your application.</p>
         </div>
 
         <div class="form-row form-row--2">
@@ -136,30 +131,9 @@
 
     <div id="statusPanel" hidden>
       <div class="alert alert--info is-visible" style="max-width:44rem;">
-        <p><strong>Application received.</strong></p>
+        <p><strong>Application sent.</strong></p>
         <p id="statusText" style="margin-top:var(--space-2);"></p>
       </div>
-    </div>
-
-    <hr style="border-color:var(--color-divider); margin:var(--space-16) 0;" />
-
-    <div style="max-width:30rem;">
-      <h2 style="font-size:var(--text-lg); margin-bottom:var(--space-4);">Already applied?</h2>
-      <form class="form" id="loginForm" novalidate>
-        <div class="form-row form-row--2">
-          <div class="form-field">
-            <label class="form-label" for="loginEmail">Email</label>
-            <input class="form-input" id="loginEmail" type="email" required />
-          </div>
-          <div class="form-field">
-            <label class="form-label" for="loginPassword">Password</label>
-            <input class="form-input" id="loginPassword" type="password" required />
-          </div>
-        </div>
-        <div class="form-submit-row">
-          <button class="btn btn-secondary" type="submit">Check Status</button>
-        </div>
-      </form>
     </div>
   </section>
 </main>

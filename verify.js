@@ -1,5 +1,9 @@
-// verify.js — guardian-managed membership application + status check.
+// verify.js — guardian-managed membership interest form. This is a fully
+// static deployment (GitHub Pages, no backend), so there are no real
+// accounts or status lookups — submitting sends the application straight to
+// KDS via email instead. Replace CONTACT_EMAIL with your real inbox address.
 (function () {
+  const CONTACT_EMAIL = 'hello@kdsos.org';
   const alertBox = document.getElementById('alertBox');
   const joinPanel = document.getElementById('joinPanel');
   const statusPanel = document.getElementById('statusPanel');
@@ -17,24 +21,11 @@
     alertBox.className = 'alert alert--error';
   }
 
-  function statusMessage(status) {
-    if (status === 'active') return 'Great news \u2014 this membership is approved and active. See you at the next session.';
-    if (status === 'revoked') return 'This membership is currently not active. Contact KDS if you believe this is a mistake.';
-    return 'Your application is in review. A KDS team member will follow up by email once it\u2019s been processed.';
-  }
-
-  function showStatus(user) {
-    joinPanel.hidden = true;
-    statusPanel.hidden = false;
-    statusText.textContent = statusMessage(user.membership_status);
-  }
-
-  document.getElementById('joinForm').addEventListener('submit', async (e) => {
+  document.getElementById('joinForm').addEventListener('submit', (e) => {
     e.preventDefault();
     clearError();
 
     const email = document.getElementById('guardianEmail').value.trim();
-    const password = document.getElementById('guardianPassword').value;
     const guardian_name = document.getElementById('guardianName').value.trim();
     const guardian_relationship = document.getElementById('guardianRelationship').value;
     const minor_first_name = document.getElementById('minorFirst').value.trim();
@@ -43,41 +34,20 @@
     const consent_given = document.getElementById('consentCheck').checked;
 
     if (!consent_given) return showError('Guardian consent is required to submit an application.');
-    if (password.length < 10 || !/[a-z]/.test(password) || !/[A-Z]/.test(password) || !/[0-9]/.test(password)) {
-      return showError('Password must be at least 10 characters and include upper case, lower case, and a number.');
-    }
 
-    const btn = document.getElementById('joinSubmit');
-    btn.disabled = true;
-    btn.textContent = 'Submitting…';
-    try {
-      const user = await window.KDS.verifyJoin({
-        email, password, guardian_name, guardian_relationship,
-        minor_first_name, minor_last_name, minor_dob, consent_given,
-      });
-      showStatus(user);
-    } catch (err) {
-      showError(err.message);
-      btn.disabled = false;
-      btn.textContent = 'Submit Application';
-    }
-  });
+    const subject = `KDS Membership Application \u2014 ${minor_first_name} ${minor_last_name}`;
+    const body = [
+      `Guardian: ${guardian_name} (${guardian_relationship})`,
+      `Guardian email: ${email}`,
+      `Rider: ${minor_first_name} ${minor_last_name}`,
+      `Rider DOB: ${minor_dob}`,
+      'Guardian consent given: yes',
+    ].join('\n');
+    const mailto = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
-  document.getElementById('loginForm').addEventListener('submit', async (e) => {
-    e.preventDefault();
-    clearError();
-    const email = document.getElementById('loginEmail').value.trim();
-    const password = document.getElementById('loginPassword').value;
-    try {
-      const user = await window.KDS.login(email, password);
-      showStatus(user);
-    } catch (err) {
-      showError(err.message);
-    }
-  });
-
-  // If a session already resumes (e.g. after a redirect on this same device), show status immediately.
-  window.KDS.resume().then((user) => {
-    if (user && user.member_type === 'guardian') showStatus(user);
+    joinPanel.hidden = true;
+    statusPanel.hidden = false;
+    statusText.textContent = `Opening your email app to send this application to the KDS team \u2014 if nothing opens, email us directly at ${CONTACT_EMAIL}. We\u2019ll follow up personally once we receive it.`;
+    window.location.href = mailto;
   });
 })();

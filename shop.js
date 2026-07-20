@@ -1,5 +1,43 @@
-// shop.js — product grid, cart drawer, checkout handoff to Stripe.
+// shop.js — static product grid + cart preview. This is a fully static
+// deployment (GitHub Pages) with no backend, so checkout is a "coming soon"
+// placeholder rather than a real Stripe handoff. Replace PRODUCTS below with
+// your real catalog whenever you're ready.
 (function () {
+  const PRODUCTS = [
+    {
+      name: 'KDSos Rider Tee',
+      slug: 'kdsos-rider-tee',
+      description: 'Soft cotton tee with the KDSos ring mark. Supports Shred Fest and the future facility fund.',
+      price_cents: 2800,
+      image_url: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=800',
+      stock: 40,
+    },
+    {
+      name: 'KDSos Snapback',
+      slug: 'kdsos-snapback',
+      description: 'Structured snapback with embroidered logo.',
+      price_cents: 2400,
+      image_url: 'https://images.unsplash.com/photo-1521369909029-2afed882baee?w=800',
+      stock: 25,
+    },
+    {
+      name: 'KDSos Sticker Pack',
+      slug: 'kdsos-sticker-pack',
+      description: 'Set of 5 weatherproof vinyl stickers for your board or bike.',
+      price_cents: 900,
+      image_url: 'https://images.unsplash.com/photo-1541580621-2e6b3c8e6e3f?w=800',
+      stock: 100,
+    },
+    {
+      name: 'KDSos Hoodie',
+      slug: 'kdsos-hoodie',
+      description: 'Heavyweight fleece hoodie, unisex fit, front pouch pocket.',
+      price_cents: 5200,
+      image_url: 'https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=800',
+      stock: 30,
+    },
+  ];
+
   const grid = document.getElementById('productGrid');
   const alertBox = document.getElementById('alertBox');
   const cartAlertBox = document.getElementById('cartAlertBox');
@@ -109,7 +147,7 @@
   document.getElementById('cartClose').addEventListener('click', closeCart);
   document.getElementById('cartOverlay').addEventListener('click', closeCart);
 
-  document.getElementById('checkoutBtn').addEventListener('click', async () => {
+  document.getElementById('checkoutBtn').addEventListener('click', () => {
     clearCartError();
     const email = document.getElementById('checkoutEmail').value.trim();
     const name = document.getElementById('checkoutName').value.trim();
@@ -121,33 +159,10 @@
     const items = Object.values(cart).map((l) => ({ slug: l.product.slug, quantity: l.qty }));
     if (!items.length) return;
 
-    const btn = document.getElementById('checkoutBtn');
-    const originalLabel = btn.innerHTML;
-    btn.disabled = true;
-    btn.textContent = 'Redirecting to Stripe…';
-    try {
-      const res = await window.KDS.checkoutShop({
-        email, items, shipping_name: name, shipping_address: address,
-      });
-      window.location.href = res.checkout_url;
-    } catch (err) {
-      showCartError(err.status === 409
-        ? 'Checkout isn\u2019t live yet \u2014 the shop owner still needs to connect a Stripe account.'
-        : err.message);
-      btn.disabled = false;
-      btn.innerHTML = originalLabel;
-    }
+    // No backend on this static deployment yet — checkout is a placeholder.
+    cartAlertBox.textContent = 'Online checkout is coming soon! In the meantime, reach out through our Contact page and we\u2019ll help you place an order.';
+    cartAlertBox.className = 'alert alert--info is-visible';
   });
 
-  // Handle Stripe redirect back to this page (?order=..&status=success|cancelled)
-  const params = new URLSearchParams(window.location.search);
-  if (params.get('status') === 'success') {
-    alertBox.textContent = `Thanks! Order #${params.get('order')} is confirmed \u2014 a receipt is on its way to your inbox.`;
-    alertBox.className = 'alert alert--success is-visible';
-  } else if (params.get('status') === 'cancelled') {
-    alertBox.textContent = 'Checkout was cancelled \u2014 your cart items are safe if you\u2019d like to try again.';
-    alertBox.className = 'alert alert--info is-visible';
-  }
-
-  window.KDS.listProducts().then(renderProducts).catch((err) => showError(err.message));
+  renderProducts(PRODUCTS);
 })();

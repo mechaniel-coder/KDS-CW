@@ -1,9 +1,13 @@
-// contact.js — contact form submission.
+// contact.js — contact form hand-off. This is a fully static deployment
+// (GitHub Pages, no backend), so submitting opens the visitor's email app
+// with a prefilled message to KDS instead of posting to a server.
+// Replace CONTACT_EMAIL with your real inbox address.
 (function () {
+  const CONTACT_EMAIL = 'hello@kdsos.org';
   const alertBox = document.getElementById('alertBox');
   const successBox = document.getElementById('successBox');
 
-  document.getElementById('contactForm').addEventListener('submit', async (e) => {
+  document.getElementById('contactForm').addEventListener('submit', (e) => {
     e.preventDefault();
     alertBox.className = 'alert alert--error';
     successBox.className = 'alert alert--success';
@@ -20,22 +24,14 @@
       return;
     }
 
-    const btn = document.getElementById('contactSubmit');
-    btn.disabled = true;
-    btn.textContent = 'Sending…';
-    try {
-      await window.KDS.sendContact({ name, email, message });
-      document.getElementById('contactForm').reset();
-      successBox.textContent = 'Thanks for reaching out \u2014 we\u2019ll get back to you soon.';
-      successBox.className = 'alert alert--success is-visible';
-      successBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    } catch (err) {
-      alertBox.textContent = err.message;
-      alertBox.className = 'alert alert--error is-visible';
-      alertBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    } finally {
-      btn.disabled = false;
-      btn.textContent = 'Send Message';
-    }
+    const subject = `KDS Contact \u2014 ${name}`;
+    const body = `${message}\n\n\u2014 ${name} (${email})`;
+    const mailto = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+    document.getElementById('contactForm').reset();
+    successBox.textContent = 'Opening your email app to send this to the KDS team \u2014 if nothing opens, email us directly at ' + CONTACT_EMAIL + '.';
+    successBox.className = 'alert alert--success is-visible';
+    successBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    window.location.href = mailto;
   });
 })();

@@ -38,40 +38,13 @@
 
 <main id="main">
   <section class="admin-login wrap" id="loginSection">
-    <span class="page-hero__eyebrow">Restricted access</span>
-    <h1 class="page-hero__title" style="font-size:var(--text-xl); margin-bottom:var(--space-6);">Admin Sign In</h1>
-    <div id="loginAlert" class="alert alert--error" role="alert"></div>
-    <form class="form" id="adminLoginForm" novalidate>
-      <div class="form-field">
-        <label class="form-label" for="adminEmail">Email</label>
-        <input class="form-input" id="adminEmail" type="email" required autocomplete="username" />
-      </div>
-      <div class="form-field">
-        <label class="form-label" for="adminPassword">Password</label>
-        <input class="form-input" id="adminPassword" type="password" required autocomplete="current-password" />
-      </div>
-      <div class="form-submit-row">
-        <button class="btn btn-primary" type="submit">Sign In</button>
-      </div>
-    </form>
-  </section>
-
-  <section class="admin-shell wrap" id="dashboardSection" hidden>
-    <div class="admin-stats" id="statsGrid"></div>
-
-    <div class="admin-tabs" role="tablist">
-      <button class="admin-tab is-active" data-tab="orders">Orders</button>
-      <button class="admin-tab" data-tab="donations">Donations</button>
-      <button class="admin-tab" data-tab="submissions">Submissions</button>
-      <button class="admin-tab" data-tab="members">Members</button>
+    <span class="page-hero__eyebrow">Restricted — backend required</span>
+    <h1 class="page-hero__title" style="font-size:var(--text-xl); margin-bottom:var(--space-6);">Admin dashboard unavailable</h1>
+    <div class="alert alert--info is-visible" style="max-width:44rem;">
+      <p>This site is currently deployed as a fully static GitHub Pages site, which can't run the backend that powers the admin dashboard (members, orders, donations, submissions).</p>
+      <p style="margin-top:var(--space-2);">To bring this dashboard online, deploy the backend included in the KDSos repository (<code>current-stack/backend</code> or <code>nextjs-port</code>) to a host that can run server code, then point this page at it.</p>
     </div>
-
-    <div id="tabAlert" class="alert alert--error" role="alert"></div>
-    <div id="tabContent"></div>
   </section>
 </main>
-
-<script src="./api.js"></script>
-<script src="./admin.js" defer></script>
 </body>
 </html>
